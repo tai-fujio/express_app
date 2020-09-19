@@ -14,5 +14,8 @@
     "graphql": "^14.6.0",
     "mongoose": "^5.10.0",
     "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "dotenv": "file:dotenv"
   }
 }
