@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-dev": "set NODE_ENV=development && gulp",
-    "build-prod": "set NODE_ENV=production && gulp",
+    "build-dev": "set NODE_ENV=development && export NODE_ENV=development && gulp",
+    "build-prod": "set NODE_ENV=production &&export NODE_ENV=production && gulp",
     "gulp": "gulp"
   },
   "author": "",
@@ -16,9 +16,12 @@
     "node": "8.x"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
     "del": "^3.0.0",
     "eslint": "^4.19.1",
     "gulp": "^3.9.1",
+    "gulp-babel": "^8.0.0",
     "gulp-sass": "^4.0.1",
     "gulp-uglify": "^3.0.0",
     "require-dir": "^1.0.0"
