@@ -1,4 +1,3 @@
-/* eslint-env node */
 const config = require("../config.js");
 const { src, dest, series } = require("gulp");
 let clean, minify;

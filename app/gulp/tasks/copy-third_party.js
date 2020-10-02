@@ -1,4 +1,3 @@
-/* eslint-env node */
 const config = require("../config.js");
 const { src, dest, series, parallel } = require("gulp");
 const del = require("del");

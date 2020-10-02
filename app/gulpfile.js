@@ -1,4 +1,3 @@
-/* eslint-env node */
 const config = require("./gulp/config.js");
 const { series } = require("gulp");
 const load = require("require-dir");
