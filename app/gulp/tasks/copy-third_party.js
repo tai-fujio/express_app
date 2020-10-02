@@ -1,34 +1,36 @@
+/* eslint-env node */
 const config = require("../config.js");
-const gulp = require("gulp");
+const { src, dest, series, parallel } = require("gulp");
 const del = require("del");
+let clean, jquery, popper, bootstrap, fontAwesome;
 
-gulp.task("copy-third_party.clean", () => {
-  del("./third_party/*", { cwd: config.path.output });
-});
+clean = async () => {
+  await del("./third_party/*", { cwd: config.path.output });
+};
 
-gulp.task("copy-third_party.jquery", ["copy-third_party.clean"], () => {
-  gulp.src("./node_modules/jquery/dist/*", { cwd: config.path.root })
-    .pipe(gulp.dest("./thrid_party/jquery", { cwd: config.path.output }));
-});
+jquery = () => {
+  return src("./node_modules/jquery/dist/*", { cwd: config.path.root })
+    .pipe(dest("./thrid_party/jquery", { cwd: config.path.output }));
+};
 
-gulp.task("copy-third_party.popper.js", ["copy-third_party.clean"], () => {
-  gulp.src("./node_modules/popper.js/dist/*", { cwd: config.path.root })
-    .pipe(gulp.dest("./thrid_party/popper.js", { cwd: config.path.output }));
-});
+popper = () => {
+  return src("./node_modules/popper.js/dist/*", { cwd: config.path.root })
+    .pipe(dest("./thrid_party/popper.js", { cwd: config.path.output }));
+};
 
-gulp.task("copy-third_party.bootstrap", ["copy-third_party.clean"], () => {
-  gulp.src("./node_modules/bootstrap/dist/*", { cwd: config.path.root })
-    .pipe(gulp.dest("./thrid_party/bootstrap", { cwd: config.path.output }));
-});
+bootstrap = () => {
+  return src("./node_modules/bootstrap/dist/*", { cwd: config.path.root })
+    .pipe(dest("./thrid_party/bootstrap", { cwd: config.path.output }));
+};
 
-gulp.task("copy-third_party.font-awesome", ["copy-third_party.clean"], () => {
-  gulp.src("./node_modules/font-awesome/*", { cwd: config.path.root })
-    .pipe(gulp.dest("./thrid_party/font-awesome", { cwd: config.path.output }));
-});
+fontAwesome = () => {
+  return src("./node_modules/font-awesome/*", { cwd: config.path.root })
+    .pipe(dest("./thrid_party/font-awesome", { cwd: config.path.output }));
+};
 
-gulp.task("copy-third_party", [
-  "copy-third_party.jquery",
-  "copy-third_party.popper.js",
-  "copy-third_party.bootstrap",
-  "copy-third_party.font-awesome",
-]);
+module.exports = series(
+  clean,
+  parallel(
+    jquery, popper, bootstrap, fontAwesome
+  ),
+);

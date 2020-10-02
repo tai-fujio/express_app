@@ -1,14 +1,18 @@
+/* eslint-env node */
 const config = require("../config.js");
-const gulp = require("gulp");
+const { src, dest, series } = require("gulp");
 const del = require("del");
 const sass = require("gulp-sass");
+let clean, compile;
 
-gulp.task("compile-sass.clean", () => {
-  del("./stylesheets/*", { cwd: config.path.output });
-});
+clean = async () => {
+  await del("./stylesheets/*", { cwd: config.path.output });
+};
 
-gulp.task("compile-sass", ["compile-sass.clean"], () => {
-  return gulp.src("./stylesheets/*.scss", { cwd: config.path.input })
+compile = () => {
+  return src("./stylesheets/*.scss", { cwd: config.path.input })
     .pipe(sass(config.sass))
-    .pipe(gulp.dest("./stylesheets", { cwd: config.path.output }));
-});
+    .pipe(dest("./stylesheets", { cwd: config.path.output }));
+};
+
+module.exports = series(clean, compile);

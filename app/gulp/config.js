@@ -1,3 +1,4 @@
+/* eslint-env node */
 const NODE_ENV = (process.env.NODE_ENV || "").trim() || "development";
 const IS_DEVELOPMENT = NODE_ENV === "development";
 module.exports = {
@@ -16,6 +17,5 @@ module.exports = {
     outputStyle: IS_DEVELOPMENT ? "expanded" : "compressed",
   },
   uglify: {
-
   },
 };

@@ -1,7 +1,10 @@
+/* eslint-env node */
 const config = require("../config.js");
-const gulp = require("gulp");
 const del = require("del");
+var clean;
 
-gulp.task("clean-log", () => {
-  del("./*", { cwd: config.path.log });
-});
+clean = async () => {
+  await del("./*", { cwd: config.path.log });
+};
+
+module.exports = clean;

@@ -31,11 +31,14 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Gulp task",
+      "name": "Gulp default",
       "program": "${workspaceFolder}/node_modules/gulp/bin/gulp.js",
       "skipFiles": [
         "<node_internals>/**"
+      ],
+      "args": [
+        "default"
       ]
-    },
+    }
   ]
 }
