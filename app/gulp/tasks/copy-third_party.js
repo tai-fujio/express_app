@@ -9,22 +9,22 @@ clean = async () => {
 
 jquery = () => {
   return src("./node_modules/jquery/dist/*", { cwd: config.path.root })
-    .pipe(dest("./thrid_party/jquery", { cwd: config.path.output }));
+    .pipe(dest("./third_party/jquery", { cwd: config.path.output }));
 };
 
 popper = () => {
-  return src("./node_modules/popper.js/dist/*", { cwd: config.path.root })
-    .pipe(dest("./thrid_party/popper.js", { cwd: config.path.output }));
+  return src("./node_modules/popper.js/dist/**/**/*", { cwd: config.path.root })
+    .pipe(dest("./third_party/popper.js", { cwd: config.path.output }));
 };
 
 bootstrap = () => {
-  return src("./node_modules/bootstrap/dist/*", { cwd: config.path.root })
-    .pipe(dest("./thrid_party/bootstrap", { cwd: config.path.output }));
+  return src("./node_modules/bootstrap/dist/**/**/**/*", { cwd: config.path.root })
+    .pipe(dest("./third_party/bootstrap", { cwd: config.path.output }));
 };
 
 fontAwesome = () => {
-  return src("./node_modules/font-awesome/*", { cwd: config.path.root })
-    .pipe(dest("./thrid_party/font-awesome", { cwd: config.path.output }));
+  return src("./node_modules/font-awesome/**/**/*", { cwd: config.path.root })
+    .pipe(dest("./third_party/font-awesome", { cwd: config.path.output }));
 };
 
 module.exports = series(
