@@ -1,17 +1,28 @@
 import * as Express from 'express';
+import * as ExpressWs from 'express-ws';
+const { app, getWss, applyTo } = ExpressWs(Express());
+applyTo(Express.Router());
+getWss().clients.forEach((ws) => {
+  if (ws.readyState !== ws.OPEN) {
+    ws.terminate();
+    return;
+  }
+  ws.ping();
+});
 
-const app = Express();
+app.get('/', (req, res) => {
+  return res.send('Hello world.');
+});
 
-app.get(
-  '/',
-  (req: Express.Request, res: Express.Response) => {
-    return res.send('Hello world.');
+app.ws('/', (ws, req) => {
+  ws.on('message', (msg) => {
+    console.log(msg);
+    ws.send(msg);
   });
+});
 
-app.listen(
-  3000,
-  () => {
-    console.log('Example app listening on port 3000!');
-  });
+app.listen(3000, () => {
+  console.log('Example app listening on port 3000!');
+});
 
 export default app;
