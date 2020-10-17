@@ -1,0 +1,12 @@
+version: '3'
+services:
+  api:
+    build: .
+    tty: true
+    working_dir: "${HOME}"
+    user: "${UID}:${GID}"
+    command: "node"
+    ports:
+      - 3000:3000
+    volumes:
+      - "./api:${HOME}/api"
