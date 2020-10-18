@@ -1,12 +1,7 @@
 const path = require('path');
-const nodeExternals = require('webpack-node-externals');
-
 module.exports = {
   mode: 'development',
-  entry: './src/server.ts',
-  target: 'node',
-  externals: [nodeExternals()],
-  devtool: 'inline-source-map',
+  entry: './src/main.ts',
   module: {
     rules: [
       {
@@ -36,7 +31,9 @@ module.exports = {
     extensions: ['.ts', '.js']
   },
   output: {
-    filename: 'server.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'public'),
+    filename: "[name].bundle.js",
+    library: 'chat_server',
+    libraryTarget: 'umd'
   }
-};
+}
