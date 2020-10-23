@@ -1,3 +1,3 @@
-FROM sandrokeil/typescript
+FROM node:8.12.0-alpine
 
 CMD "node"

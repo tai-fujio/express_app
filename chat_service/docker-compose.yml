@@ -20,3 +20,13 @@ services:
       - 3001:3001
     volumes:
       - "./client:${HOME}/client"
+  admin:
+    build: ./admin
+    tty: true
+    working_dir: "${HOME}"
+    user: "${UID}:${GID}"
+    command: "node"
+    ports:
+      - 3002:3002
+    volumes:
+      - "./admin:${HOME}/admin"
