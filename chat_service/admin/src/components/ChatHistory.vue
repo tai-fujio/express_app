@@ -25,4 +25,7 @@ export default class ChatHistory extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.hello {
+  background-color: peachpuff;
+}
 </style>

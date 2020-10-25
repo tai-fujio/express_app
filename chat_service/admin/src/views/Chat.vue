@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <ChatHistory v-bind:messages="messages" />
+    <ChatHistory v-bind:messages="msgs" />
     <ChatInputForm @send="send" />
   </div>
 </template>
@@ -19,15 +19,15 @@ import { Message } from "@/models/Message.ts";
   },
 })
 export default class Chat extends Vue {
-  public messages: Message[] = [];
+  public msgs: Message[] = [];
   public static index: number = 0;
   public mounted() {
-    this.messages.push(new Message(0, "テスト用初回メッセージ"));
+    this.msgs.push(new Message(0, "テスト用初回メッセージ"));
   }
   public send(input: string) {
     const id = ++Chat.index;
     const msg = new Message(id, input);
-    this.messages.push(msg);
+    this.msgs.push(msg);
   }
 }
 </script>

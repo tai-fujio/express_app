@@ -17,4 +17,7 @@ export default class ChatMessage extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+div {
+  background-color: pink;
+}
 </style>
